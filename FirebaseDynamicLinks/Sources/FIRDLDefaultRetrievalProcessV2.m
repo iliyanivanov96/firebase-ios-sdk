@@ -207,10 +207,8 @@ NS_ASSUME_NONNULL_BEGIN
   }
 
   NSString *pasteboardContents = @"";
-  if (@available(iOS 10.0, *)) {
-    if ([[UIPasteboard generalPasteboard] hasURLs]) {
-      pasteboardContents = [UIPasteboard generalPasteboard].string;
-    }
+  if (@available(iOS 14.0, *)) {
+      // Do not access pasteboard after iOS 14 to prevent notification toast message
   } else {
     pasteboardContents = [UIPasteboard generalPasteboard].string;
   }
